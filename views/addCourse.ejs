@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/stylesheet.css" />
+    <title>Lägg till kurs</title>
+  </head>
+  <body>
+    <header>
+      <h1>Serverbaserad webbutveckling</h1>
+      <nav>
+        <li><a href="/">Startsida</a></li>
+        <li><a href="/about">Om</a></li>
+        <li>
+          <a href="/addCourse" class="active-page">Lägg till kurs</a>
+        </li>
+      </nav>
+    </header>
+    <div class="container">
+      <main>
+        <h1>Lägg till kurs</h1>
+
+        <% if(locals.errors.length > 0){%>
+        <ul>
+          <%errors.forEach((error)=>{%>
+          <li><%= error %></li>
+          <% }); %>
+        </ul>
+        <% } %>
+
+        <form method="post" action="/addCourse">
+          <label for="coursecode">Kurskod</label>
+          <input type="text" id="coursecode" name="coursecode" />
+          <br />
+          <label for="name">Kursnamn</label>
+          <input type="text" id="name" name="name" />
+          <br />
+          <label for="syllabus">Kursplan</label>
+          <input type="text" id="syllabus" name="syllabus" />
+          <br />
+          <label for="progression">Progression</label>
+          <input type="text" id="progression" name="progression" />
+          <br />
+          <input type="submit" value="Lägg till ny kurs" />
+        </form>
+      </main>
+    </div>
+  </body>
+</html>

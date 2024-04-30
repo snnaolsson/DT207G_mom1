@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Startsida</title>
+    <link rel="stylesheet" href="/css/stylesheet.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Serverbaserad webbutveckling</h1>
+      <nav>
+        <li><a href="/" class="active-page, overlined">Startsida</a></li>
+        <li><a href="/about" class="overlined">Om</a></li>
+        <li><a href="/addCourse" class="overlined">Lägg till kurs</a></li>
+      </nav>
+    </header>
+    <div class="container" id="index-container">
+      <main>
+        <h1>Kurslista</h1>
+        <a href="/addCourse" id="addLink">Lägg till kurs</a>
+
+        <table class="courseLiEl">
+          <tr>
+            <th>Kurskod</th>
+            <th>Kursnamn</th>
+            <th>Kursplan</th>
+            <th>Progression</th>
+          </tr>
+          <% if(locals.rows !== ''){%> <%locals.rows.forEach((row)=>{%>
+          <tr>
+            <td><%=row.course_code%></td>
+            <td><%=row.name %></td>
+            <td><a href="<%= row.syllabus%>" class="syllaLink">Kursplan</a></td>
+            <td><%=row.progression%></td>
+            <td><a href="/delete/<%= row.id %>">Radera kurs</a></td>
+          </tr>
+
+          <%});%> <%}%>
+        </table>
+      </main>
+    </div>
+  </body>
+</html>
